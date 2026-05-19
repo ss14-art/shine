@@ -3,6 +3,9 @@
 ## About the PR
 <!-- What did you change? -->
 
+## Linked issue / task
+<!-- Link the issue, task, Discord thread, or design/proposal discussion this PR closes or advances. -->
+
 ## Why / Balance
 <!-- Discuss how this would affect game balance or explain why it was changed. Link any relevant discussions or issues. -->
 
@@ -17,6 +20,11 @@ Small fixes/refactors are exempt. -->
 <!-- Confirm the following by placing an X in the brackets without spaces inside (for example: [X] ): -->
 - [ ] I have tested all added content and changes.
 - [ ] I have added media to this PR or it does not require an in-game showcase.
+- [ ] New Shine-only code/resources are under `_sh`, or I explained why an upstream file had to be touched.
+- [ ] Any edited file outside `_sh` uses a narrow `shine-edit start` / `shine-edit end` marker block.
+- [ ] I did not modify `RobustToolbox`.
+- [ ] Player-facing strings are localized.
+- [ ] Networked or interactive gameplay was checked for prediction, `Dirty`/`DirtyField`, and server validation.
 <!-- You should understand that not following the above may get your PR closed at maintainer’s discretion -->
 
 ## Licensing
