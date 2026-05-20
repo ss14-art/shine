@@ -1,47 +1,49 @@
-<!-- If you are new to the Delta-V repository, please read the [Contributing Guidelines](https://github.com/DeltaV-Station/Delta-v/blob/master/CONTRIBUTING.md) -->
+<!-- Если вы впервые в репозитории shine, прочтите [Contributing Guidelines](https://github.com/ss14-art/shine/blob/master/CONTRIBUTING.md) -->
 
-## About the PR
-<!-- What did you change? -->
+## О PR
+<!-- Что вы изменили? -->
 
-## Linked issue / task
-<!-- Link the issue, task, Discord thread, or design/proposal discussion this PR closes or advances. -->
+## Связанная задача / обсуждение
+<!-- Ссылка на issue, задачу, тред в Discord или обсуждение дизайна/предложения, которое закрывает или продвигает этот PR. -->
 
-## Why / Balance
-<!-- Discuss how this would affect game balance or explain why it was changed. Link any relevant discussions or issues. -->
+## Почему / Баланс
+<!-- Обсудите, как это повлияет на игровой баланс, или объясните, почему изменение было сделано. Прикрепите ссылки на любые относящиеся к делу обсуждения или issue. -->
 
-## Technical details
-<!-- Summary of code changes for easier review. -->
+## Технические детали
+<!-- Краткое описание изменений в коде, чтобы упростить ревью. -->
 
-## Media
-<!-- Attach media if the PR makes in-game changes (clothing, items, features, etc).
-Small fixes/refactors are exempt. -->
+## Медиа
+<!-- Прикрепите медиа, если PR вносит видимые в игре изменения (одежда, предметы, фичи и т.п.).
+Небольшие исправления и рефакторинг освобождаются от этого требования. -->
 
-## Requirements
-<!-- Confirm the following by placing an X in the brackets without spaces inside (for example: [X] ): -->
-- [ ] I have tested all added content and changes.
-- [ ] I have added media to this PR or it does not require an in-game showcase.
-- [ ] New Shine-only code/resources are under `_sh`, or I explained why an upstream file had to be touched.
-- [ ] Any edited file outside `_sh` uses a narrow `shine-edit start` / `shine-edit end` marker block.
-- [ ] I did not modify `RobustToolbox`.
-- [ ] Player-facing strings are localized.
-- [ ] Networked or interactive gameplay was checked for prediction, `Dirty`/`DirtyField`, and server validation.
-<!-- You should understand that not following the above may get your PR closed at maintainer’s discretion -->
+## Требования
+<!-- Подтвердите выполнение, поставив X в скобках без пробелов (например: [X] ): -->
+- [ ] Я протестировал весь добавленный контент и все изменения.
+- [ ] Я прикрепил медиа к этому PR, либо PR не требует демонстрации в игре.
+- [ ] Новый код/ресурсы, специфичные для Shine, находятся в `_sh`, либо я объяснил, почему пришлось тронуть upstream-файл.
+- [ ] Любой изменённый файл вне `_sh` обёрнут в узкий блок-маркер `shine-edit start` / `shine-edit end`.
+- [ ] Я не модифицировал `RobustToolbox`.
+- [ ] Строки, видимые игроку, локализованы.
+- [ ] Сетевые и интерактивные механики проверены на предмет предикции, `Dirty`/`DirtyField` и серверной валидации.
+<!-- Помните: несоблюдение этих требований может привести к закрытию вашего PR на усмотрение мейнтейнеров. -->
 
-## Licensing
-<!-- This is for the benefit of other forks wishing to port features from DeltaV
-Our repository is AGPL, meaning projects using the MIT license would have to ask for permission from the PR author (ideally that's you, reading this) before being allowed to port it over
-This just saves them the trouble. Note that AGPL or MIT licensing is only applicable to SOFTWARE, and that assets such as textures and audio have their own licensing scheme that is defined in the codebase itself. -->
-- [ ] I confirm that I am the creator of the code in this PR, and allow licensing it under the following license(s), or that the original author(s) has given me permission to do so:
-  - [X] AGPL (https://github.com/DeltaV-Station/Delta-v/blob/master/LICENSE-AGPLv3.txt) <!-- This one is required to contribute to DeltaV -->
-  - [X] MIT (https://github.com/DeltaV-Station/Delta-v/blob/master/LICENSE-MIT.txt) <!-- Optional - A lot of other SS14 forks use MIT -->
-    <!-- Feel free to add more licenses as you see fit -->
+## Лицензирование
+<!-- Этот раздел — для удобства других форков, желающих портировать фичи из shine.
+Наш репозиторий распространяется под AGPL, поэтому проекты на MIT должны спрашивать разрешение у автора PR (в идеале — у вас, читающего эти строки), прежде чем портировать код.
+Это просто экономит им время. Обратите внимание: AGPL или MIT лицензирование применимо только к ПРОГРАММНОМУ КОДУ; такие ресурсы, как текстуры и аудио, имеют собственную схему лицензирования, определённую в самом коде проекта. -->
+- [ ] Я подтверждаю, что являюсь создателем кода в этом PR, и разрешаю лицензировать его под следующими лицензиями, либо оригинальный автор(ы) дал(и) мне на это разрешение:
+  - [X] AGPL (https://github.com/ss14-art/shine/blob/master/LICENSE-AGPLv3.txt) <!-- Обязательно для контрибуции в shine -->
+  - [ ] MIT (https://github.com/ss14-art/shine/blob/master/LICENSE-MIT.txt) <!-- Необязательно — многие форки SS14 используют MIT -->
+    <!-- Можете добавить другие лицензии на своё усмотрение -->
 
 **Changelog**
-<!-- Add a Changelog entry to make players aware of new features or changes that could affect gameplay.
-Make sure to read the guidelines and take this Changelog template out of the comment block in order for it to show up.
-Changelog must have a :cl: symbol, so the bot recognizes the changes and adds them to the game's changelog. -->
 <!--
-:cl:
+Добавьте запись в Changelog, чтобы игроки узнали о новых функциях или изменениях, влияющих на геймплей.
+Обязательно прочтите рекомендации и вынесите этот шаблон Changelog из блока комментария, чтобы он отобразился.
+Changelog должен начинаться с символа :cl:, чтобы бот распознал изменения и добавил их в игровой changelog.
+-->
+<!--
+:cl: YouName
 - add: Added fun!
 - remove: Removed fun!
 - tweak: Changed fun!
