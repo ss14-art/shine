@@ -1,50 +1,41 @@
-# Delta-V Contributing Guidelines
+# Рекомендации по участию в разработке Shine
 
-Generally we follow [upstream's PR guidelines](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html) for code quality and such.
+Как правило, мы следуем [рекомендациям upstream по созданию PR](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html) в вопросах качества кода и прочего.
 
-Importantly do not make webedits, copied verbatim from above:
-> Do not use GitHub's web editor to create PRs. PRs submitted through the web editor may be closed without review.
+Важно: не делайте веб-редакции. Дословно из документации выше:
+> Не используйте веб-редактор GitHub для создания PR. PR, отправленные через веб-редактор, могут быть закрыты без рассмотрения.
 
-Upstream is the [space-wizards/space-station-14](https://github.com/space-wizards/space-station-14) repository that wizden runs on.
+Upstream — это репозиторий [space-wizards/space-station-14](https://github.com/space-wizards/space-station-14), на котором работает wizden.
 
-# Content specific to Delta-V
+# Контент, специфичный для Shine
 
-In general anything you create from scratch (not modifying something that exists from upstream) should go in a DeltaV subfolder, `_DV`.
+В общем случае всё, что вы создаёте с нуля (а не модифицируете существующий код из upstream), должно находиться в подпапке Shine — `_sh`.
 
-Examples:
-- `Content.Server/_DV/Chapel/SacrificialAltarSystem.cs`
-- `Resources/Prototypes/_DV/ai_factions.yml`
-- `Resources/Audio/_DV/Items/gavel.ogg`
-- `Resources/Textures/_DV/Icons/cri.rsi`
-- `Resources/Locale/en-US/_DV/shipyard/shipyard-console.ftl`
-- `Resources/ServerInfo/Guidebook/_DV/AlertProcedure.xml`
-  Note that guidebooks go in `ServerInfo/Guidebook/_DV` and not `ServerInfo/_DV`!
+# Изменения в upstream-файлах
 
-# Changes to upstream files
+При модификации файлов, не относящихся к Shine (то есть файлов, которые находятся **не** в папках `_sh`), придерживайтесь нескольких правил, чтобы нам было проще управлять проектом.
 
-Follow a few guidelines when modifying non-DeltaV files, to help us manage our project. (files that are not in `_DV` or `Nyano` folders)
+Прежде всего, **добавляйте комментарии к новым или изменённым строкам или рядом с ними** в upstream-файлах. Объясняйте, что было изменено, чтобы облегчить разрешение конфликтов слияния; мы регулярно вливаем новые изменения из upstream в наш проект.
 
-Primarily, **add comments on or around all new or changed lines** in upstream files. Explain what was changed to make resolving merge conflicts easier; we regularly merge new upstream changes into our project.
+### Изменение Upstream YAML (.yml) файлов
 
-### Changing Upstream YAML .yml files
+**Добавляйте комментарии к изменённым строкам или рядом с ними.**
 
-**Add comments on or around any changed lines.**
-
-If you add a new component to a prototype, add an explanation to the `type: ...` line. Example:
+Если вы добавляете новый компонент к прототипу, добавьте пояснение к строке `type: ...`. Пример:
 
 ```yml
 - type: entity
   parent: MobSiliconBase
   id: MobSupplyBot
   components:
-  - type: InteractionPopup # DeltaV - Make supplybots pettable
+  - type: InteractionPopup # shine-edit start - Make supplybots pettable # shine-edit end
     interactSuccessString: petting-success-supplybot
     interactFailureString: petting-failure-supplybot
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
 ```
 
-Whereas if you just modify some fields of a component, comment the fields instead, using inline or block comments. Examples:
+Если же вы просто изменяете некоторые поля компонента, комментируйте сами поля, используя строчные или блочные комментарии. Примеры:
 
 ```yml
 - type: entityTable
@@ -52,33 +43,35 @@ Whereas if you just modify some fields of a component, comment the fields instea
   table: !type:AllSelector
     children:
     - id: ClothingHandsGlovesCombat
-    - id: ClothingShoesBootsSecurityMagboots # DeltaV - Added security magboots.
+    - id: ClothingShoesBootsSecurityMagboots # shine-edit start - Added security magboots. # shine-edit end
     - id: ClothingShoesBootsJack
-    #- id: ClothingOuterCoatWarden # DeltaV - removed for incongruence
-    #- id: ClothingOuterWinterWarden # DeltaV - removed for incongruence
+    # shine-edit start - removed for incongruence
+    #- id: ClothingOuterCoatWarden
+    #- id: ClothingOuterWinterWarden
+    # shine-edit end
     - id: RubberStampWarden
     - id: DoorRemoteArmory
     - id: HoloprojectorSecurity
-    # Begin DeltaV additions
+    # shine-edit start
     - id: WeaponEnergyShotgun
     - id: BoxPDAPrisoner
     - id: LunchboxSecurityFilledRandom
       prob: 0.3
-    # End DeltaV additions
+    # shine-edit end
 ```
 
-### Changing Upstream C# .cs files
+### Изменение Upstream C# (.cs) файлов
 
-If you are adding a lot of C# code, then take advantage of partial classes. Put the new code in its own file in the `_DV` folder, if it makes sense.
+Если вы добавляете много кода на C#, используйте преимущества частичных классов. Разместите новый код в отдельном файле в папке `_sh`, если это целесообразно.
 
-Otherwise, **add comments on or around any changed lines.**
+В противном случае **добавляйте комментарии к новым или изменённым строкам или рядом с ними.**
 
-A comment on a new imported namespace:
+Комментарий к новому импортированному пространству имён:
 ```cs
-using Content.Server.Psionics.Glimmer; // DeltaV
+using Content.Server.Psionics.Glimmer; // shine-edit
 ```
 
-A pair of comments enclosing a block of added code:
+Пара комментариев, ограничивающая блок добавленного кода:
 ```cs
 private EntityUid Slice(...)
 {
@@ -86,31 +79,32 @@ private EntityUid Slice(...)
 
     _transform.SetLocalRotation(sliceUid, 0);
 
-    // DeltaV - start of deep frier stuff
+    // shine-edit start - deep frier stuff
     var slicedEv = new FoodSlicedEvent(user, uid, sliceUid);
     RaiseLocalEvent(uid, ref slicedEv);
-    // DeltaV - end of deep frier stuff
+    // shine-edit end
 
     ...
 }
 ```
 
-### Changing Upstream Localization Fluent .ftl files
+### Изменение Upstream файлов локализации Fluent (.ftl)
 
-**Move all changed locale strings to a new DeltaV file** - use a `.ftl` file in the `_DV` folder. Comment out the old strings in the upstream file, and explain that they were moved.
+**Перемещайте все изменённые строки локализации в новый файл Shine** — используйте файл `.ftl` в папке `_sh`. Закомментируйте старые строки в upstream-файле и укажите, что они были перемещены.
 
-Example:
+Пример:
 
-Commented out old string in `Resources\Locale\en-US\xenoarchaeology\artifact-analyzer.ftl`
+Закомментированная старая строка в `Resources\Locale\en-US\xenoarchaeology\artifact-analyzer.ftl`
 ```
-# DeltaV - moved to _DV file
+# shine-edit start - moved to _sh file
 #analysis-console-info-effect-value = [font="Monospace" size=11][color=gray]{ $state ->
 #    [true] {$info}
 #    *[false] Unlock nodes to gain info
 #}[/color][/font]
+# shine-edit end
 ```
 
-The new version of the string in `Resources\Locale\en-US\_DV\xenoarchaeology\artifact-analyzer.ftl`
+Новая версия строки в `Resources\Locale\en-US\_sh\xenoarchaeology\artifact-analyzer.ftl`
 ```
 analysis-console-info-effect-value = [font="Monospace" size=11][color=gray]{ $state ->
     [vagueandspecific] {$vagueInfo} ({$specificInfo})
@@ -121,53 +115,51 @@ analysis-console-info-effect-value = [font="Monospace" size=11][color=gray]{ $st
 }[/color][/font]
 ```
 
-Also keep in mind that fluent (.ftl) files **do not support comments on the same line** as a locale value, so be careful when commenting.
+Также имейте в виду, что файлы fluent (.ftl) **не поддерживают комментарии на той же строке**, что и значение локализации, поэтому будьте внимательны при комментировании.
 
-### Early merges
+### Ранние слияния
 
-We mostly merge upstream changes in big chunks (e.g. a month of upstream PRs at a time), but urgent changes can be merged early, separately.
+Обычно мы сливаем изменения из upstream большими порциями (например, за месяц PR-ов upstream разом), но срочные изменения могут быть слиты раньше, отдельно.
 
-Early merges are an exception to the above rules - if cherry-picking a PR for an early merge, you don't need to add `#DeltaV` comments, since the code is coming directly from upstream without any changes.
+Ранние слияния являются исключением из вышеперечисленных правил — если вы cherry-pick'аете PR для раннего слияния, вам не нужно добавлять комментарии `shine-edit start/end`, так как код приходит напрямую из upstream без каких-либо изменений.
 
-# Mapping
+# Маппинг
 
-If you want to make changes to a map, get in touch with its maintainer to make sure you don't both make changes at the same time.
+Если вы хотите внести изменения в карту, свяжитесь с её мейнтейнером, чтобы убедиться, что вы не вносите изменения одновременно.
 
-Conflicts with maps make PRs mutually exclusive so either your work or the maintainer's work will be lost, communicate to avoid this!
+Конфликты карт делают PR взаимоисключающими, поэтому либо ваша работа, либо работа мейнтейнера будет потеряна. Общайтесь, чтобы избежать этого!
 
-Please make a detailed list of **all** changes(even minor changes) with locations when submitting a PR. This helps reviewers hone in on them without having to search an entire map for differences. Ex: [Map Edits](https://github.com/DeltaV-Station/Delta-v/pull/3165)
+Пожалуйста, составляйте подробный список **всех** изменений (даже незначительных) с указанием локаций при отправке PR. Это помогает проверяющим сосредоточиться на них без необходимости искать отличия по всей карте. Пример: [Правки карты](https://github.com/DeltaV-Station/Delta-v/pull/3165)
 
 
-**Submitting a map PR**
+**Отправка PR с картой**
 
-Please limit changelogs on map PRs to **significant** map alterations or additions. Minor map edits do not need changelogs.
-Format for map PRs looks like:
+Пожалуйста, ограничивайте чейнджлог для PR с картами **значительными** изменениями или дополнениями карты. Незначительные правки карты не требуют чейнджлога.
+Формат для PR с картами выглядит так:
 ```
-:cl: Yourname
+:cl: ВашеИмя
 MAPS:
-- add: Mapname: Added fun!
-- remove: Mapname: Removed fun!
-- tweak: Mapname: Changed fun!
-- fix: Mapname: Fixed fun!
+- add: ИмяКарты: Добавлено веселье!
+- remove: ИмяКарты: Убрано веселье!
+- tweak: ИмяКарты: Изменено веселье!
+- fix: ИмяКарты: Исправлено веселье!
 ``` 
 
-# Before you submit
+# Перед отправкой
 
-Double-check your diff on GitHub before submitting: look for unintended commits or changes and remove accidental whitespace or line-ending changes.
+Перепроверьте ваш дифф на GitHub перед отправкой: ищите непреднамеренные коммиты или изменения и убирайте случайные пробелы или изменения окончаний строк.
 
-Additionally for long-lasting PRs, if you see `RobustToolbox` in the changed files you have to revert it, use `git checkout upstream/master RobustToolbox` (replacing `upstream` with the name of your DeltaV-Station/Delta-V remote)
+Кроме того, для долгоиграющих PR, если вы видите `RobustToolbox` в изменённых файлах, вы должны откатить эти изменения. Используйте `git checkout upstream/master RobustToolbox` (заменив `upstream` на имя вашего удалённого репозитория ss14-art/shine).
 
-# Changelogs
+# Чейнджлоги
 
-By default any changelogs goes in the DeltaV changelog, you can use the DeltaV admin changelog by putting `DELTAVADMIN:` in a line after `:cl:`.
+По умолчанию все чейнджлоги попадают в чейнджлог Shine. Вы можете использовать чейнджлог администраторов Shine, указав `SHINEADMIN:` на строке после `:cl:`.
 
-Do not use `ADMIN:` as **it will mangle** the upstream admin changelog!
+Не используйте `ADMIN:`, так как **это испортит** upstream чейнджлог администраторов!
 
-# Additional resources
+# Дополнительные ресурсы
 
-If you are new to contributing to SS14 in general, have a look at the [SS14 docs](https://docs.spacestation14.io/) or ask for help in `#contribution-help` on [Discord](https://discord.gg/deltav)!
+Если вы новичок в разработке SS14 в целом, ознакомьтесь с [документацией SS14](https://docs.spacestation14.io/) или попросите помощи в `#contribution-help` в [Discord](https://discord.gg/qcK4ZKFNUb)!
 
-## AI-Generated Content
-Code, sprites and any other AI-generated content is not allowed to be submitted to the repository.
-
-Trying to PR AI-generated content may result in you being banned from contributing.
+## Контент, сгенерированный ИИ
+Код, спрайты и любой другой контент, сгенерированный ИИ, **не запрещён**, однако он должен проверяться более тщательно и быть помечен лейблом `AI`.
