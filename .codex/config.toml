@@ -5,10 +5,8 @@
 name = "shine-project"
 default_skill = "shine-project"
 
-[instructions]
-root = ".agents"
-rules = ".agents/rules"
-skills = ".agents/skills"
+# instructions must be a string (not a table)
+instructions = ".agents"
 
 [guardrails]
 forbid_paths = ["RobustToolbox/**"]
