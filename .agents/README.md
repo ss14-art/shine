@@ -10,4 +10,4 @@ Adapters outside this directory, such as `AGENTS.md`, `.cursor/rules`, `.github/
 
 For code changes, start with `.agents/skills/shine-project/SKILL.md`.
 
-For WizDen documentation lookup, start with `.agents/skills/ss14-wizden-docs/SKILL.md`. Its generated `references/wizden-docs-full-catalog.md` covers every markdown file in the local `D:\.avid\docs\src\en` snapshot.
+For WizDen documentation lookup, start with `.agents/skills/ss14-wizden-docs/SKILL.md`. Its generated `references/wizden-docs-full-catalog.md` covers every markdown file in the local `docs/src/en` snapshot.

@@ -1,6 +1,6 @@
 # WizDen Docs Index For Shine Agents
 
-Local docs root: `D:\.avid\docs\src\en`.
+Local docs root: `docs/src/en`.
 
 Use this as the curated routing map for the docs most often needed by code agents. Read the named local document before changing the matching subsystem. If the document is stale, follow current repo code and Shine rules.
 

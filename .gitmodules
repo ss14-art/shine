@@ -3,3 +3,6 @@
 	url = https://github.com/space-wizards/RobustToolbox.git
 	branch = master
 	ignore = dirty
+[submodule "docs"]
+	path = docs
+	url = https://github.com/space-wizards/docs.git

@@ -5,7 +5,7 @@ description: Route and summarize the local WizDen documentation snapshot for Shi
 
 # SS14 WizDen Docs
 
-The local docs snapshot is at `D:\.avid\docs\src\en`. Use it for domain context, then prefer current repo code and Shine rules when there is a conflict.
+The local docs snapshot is at `docs/src/en`. Use it for domain context, then prefer current repo code and Shine rules when there is a conflict.
 
 ## Canon Rule
 
@@ -24,7 +24,7 @@ Docs are reference material. `.agents/rules` and `.agents/skills` are the source
 
 - `references/wizden-docs-notes.md`: compressed engineering/design takeaways from the docs.
 - `references/wizden-docs-index.md`: curated routing map for the files most relevant to code, resources, gameplay, UI, mapping, and review.
-- `references/wizden-docs-full-catalog.md`: generated heading catalog of every markdown file under `D:\.avid\docs\src\en`.
+- `references/wizden-docs-full-catalog.md`: generated heading catalog of every markdown file under `docs/src/en`.
 - `scripts/build_wizden_catalog.py`: regenerate the full catalog after the local docs snapshot changes.
 
 ## High-Value Docs
